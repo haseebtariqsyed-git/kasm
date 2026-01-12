@@ -49,7 +49,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: kasmdemoregistry/ksam-image
+          images: kasmdemoregistry/kasmdemo
           tags: |
             type=ref,event=branch
             type=ref,event=tag
@@ -61,6 +61,8 @@ jobs:
           context: .
           file: ./.github/workflows/Dockerfile
           push: true
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
-          platforms: linux/amd64,linux/arm64
+          tags: |
+            kasmdemoregistry/kasmdemo:latest
+            kasmdemoregistry/kasmdemo:${{ github.ref_name }}
+            kasmdemoregistry/kasmdemo:sha-${{ github.sha }}
+    
