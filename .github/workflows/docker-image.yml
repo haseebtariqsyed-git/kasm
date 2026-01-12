@@ -49,7 +49,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: kasmdemoregistry/ksam-image:latest
+          images: kasmdemoregistry/ksam-image
           tags: |
             type=ref,event=branch
             type=ref,event=tag
