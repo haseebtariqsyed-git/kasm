@@ -51,9 +51,7 @@ jobs:
         with:
           images: kasmdemoregistry/kasmdemo
           tags: |
-            type=ref,event=branch
-            type=ref,event=tag
-            type=sha
+              type=sha
 
       - name: Build and push
         uses: docker/build-push-action@v6
@@ -62,7 +60,6 @@ jobs:
           file: ./.github/workflows/Dockerfile
           push: true
           tags: |
-            kasmdemoregistry/kasmdemo:latest
-            kasmdemoregistry/kasmdemo:${{ github.ref_name }}
-            kasmdemoregistry/kasmdemo:sha-${{ github.sha }}
+              kasmdemoregistry/kasmdemo:sha-${{ github.sha }}
+       
     
